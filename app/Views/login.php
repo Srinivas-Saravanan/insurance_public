@@ -20,13 +20,15 @@
                 <?php endif;?>
                 <div class="formgroup">
                     <label for="">Username</label>
-                    <input type="text" class="form-control" name="username" placeholder="username" value="<?= set_value('username') ?>">
+
+                    <input type="text" class="form-control" name="username" placeholder="Enter your Username" value="<?= set_value('username') ?>">
+
                     <span class="text-danger"><?= isset($validation)? displayError($validation,'username'): ''  ?></span>
                     <br><br>
                 </div>
                 <div class="formgroup">
                     <label for="">Password</label>
-                    <input type="text" class="form-control" name="password" placeholder="Enter your Password" value="<?= set_value('password') ?>">
+                    <input type="text" class="form-control" name="password" placeholder="Password" value="<?= set_value('password') ?>">
                     <span class="text-danger"><?= isset($validation)? displayError($validation,'password'): ''  ?></span>
                     <br>
                 </div>
