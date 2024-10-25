@@ -20,7 +20,7 @@
                 <?php endif;?>
                 <div class="formgroup">
                     <label for="">Username</label>
-                    <input type="text" class="form-control" name="username" placeholder="Enter your username" value="<?= set_value('username') ?>">
+                    <input type="text" class="form-control" name="username" placeholder="username" value="<?= set_value('username') ?>">
                     <span class="text-danger"><?= isset($validation)? displayError($validation,'username'): ''  ?></span>
                     <br><br>
                 </div>
