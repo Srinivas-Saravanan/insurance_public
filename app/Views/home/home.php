@@ -81,26 +81,32 @@
     </style>
 </head>
 <body>
-    <?= view('home/sidebar'); ?> 
+<?= $this->extend('layout') ?>
 
-    <div class="content" id="content">
-    <div class="container mt-4">
+<?= $this->section('title') ?>
+Home
+<?= $this->endSection() ?>
+
+<?= $this->section('content') ?>
+<div class="container mt-4">
     <form action="<?= base_url('home/home') ?>" method="post">
+        <!-- Form content here -->
+        <form action="<?= base_url('home/home') ?>" method="post">
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" name="name" id="name" placeholder="Enter name">
+                    <input type="text" class="form-control" name="name" id="name" placeholder='<?= isset($name)? $name :"Enter name"?>'>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="gender">Gender</label>
                     <select class="form-control" name="gender" id="gender">
-                        <option selected>Select</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="others">Others</option>
+                        <option <?= isset($gender)? '': 'selected'?>>Select</option>
+                        <option <?= isset($gender) && $gender == 'male'? 'selected' :""?>value="male">Male</option>
+                        <option <?= isset($gender) && $gender == 'female'? 'selected' :""?> value="female">Female</option>
+                        <option <?= isset($gender) && $gender == 'other'? 'selected' :""?>value="others">Others</option>
                     </select>
                 </div>
             </div>
@@ -174,6 +180,13 @@
         </table>
     </div>
 
+    </form>
+</div>
+<?= $this->endSection() ?>
+
+    <div class="content" id="content">
+    <div class="container mt-4">
+    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

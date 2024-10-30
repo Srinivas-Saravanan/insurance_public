@@ -4,6 +4,7 @@ namespace App\Controllers;
 use App\Models\UsersModel;
 use App\Models\FamilyModel;
 use App\Models\RuleModel;
+use App\Libraries\Hash;
 use DateTime;
 
 class Auth extends BaseController
@@ -56,10 +57,10 @@ class Auth extends BaseController
             session()->setFlashdata('fail', 'Username does not exist');
             return redirect()->to('/login')->withInput(); // Redirect to login explicitly
         }
-    
-        if ($password != $user_info['password']) {
+        
+        if (!Hash::check($password,$user_info['password'])) {
             session()->setFlashdata('fail', 'Incorrect Password');
-            return redirect()->to('/login')->withInput(); 
+            return redirect()->to('/')->withInput(); 
             
         }
     else{
@@ -126,7 +127,7 @@ class Auth extends BaseController
         } else {
             $query->where('relationship', 'self');
         }
-    
+
         $records['familyhead'] = $query->orderBy('familyCode', 'ASC')->findAll();
     
         return view('home/home', ['records' => $records]);
@@ -429,6 +430,9 @@ public function dashboard(){
     $model = new FamilyModel();
     if ($familyCode) {
         $exists = $model->where('familyCode', $familyCode)->countAllResults() > 0;
+        if ($exists){
+            session()->setFlashdata('alert','Family Code Already Exists');
+        }
         return $this->response->setJSON(['exists' => $exists]);
     }
 
@@ -465,11 +469,10 @@ public function saveFam() {
     $role = 'employee';
     $data3 =[
         'username' => $name,
-        'password'=>$password,
+        'password'=>Hash::make($password),
         'role'=>$role
     ];
-    // var_dump($data3['']);
-    // die();
+
     $newUser = $user->insert($data3);
 
     

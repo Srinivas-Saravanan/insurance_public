@@ -1,5 +1,1 @@
-Hello World
-git@github.com:Srinivas-Saravanan/insurance2.git
-git config pull.rebase false
-git config pull.rebase true
-git config pull.ff only 
+Hello World;

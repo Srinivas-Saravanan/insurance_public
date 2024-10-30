@@ -66,10 +66,15 @@
     </style>
 </head>
 <body>
-    <?= view('home/sidebar') ?>
-    <div class="content">
-        <div class="container mt-5">
-            <h2 class="mb-4">Family List</h2>
+<?= $this->extend('layout') ?>
+
+<?= $this->section('title') ?>
+Home
+<?= $this->endSection() ?>
+
+<?= $this->section('content') ?>
+<div class="container mt-5">
+<h2 class="mb-4">Family List</h2>
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
@@ -90,7 +95,12 @@
             </table>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+</div>
+<?= $this->endSection() ?>
+
+
+                <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>

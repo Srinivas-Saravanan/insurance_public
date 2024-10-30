@@ -79,12 +79,18 @@
     </style>
 </head>
 <body>
+<?= $this->extend('layout') ?>
+
+<?= $this->section('title') ?>
+Home
+<?= $this->endSection() ?>
+
+<?= $this->section('content') ?>
 <?php if (session()->getFlashdata('alert')): ?>
     <div class="alert alert-success">
         <?= session()->getFlashdata('alert') ?>
     </div>
 <?php endif; ?>
-<?= view('home/sidebar')?>
 <div class="content">
     <form action="<?=base_url('home/saveRules')?>" method="post">
         <div class="form-group form-check">
@@ -124,6 +130,8 @@
         <button type="submit" class="btn btn-success mt-3">Save</button>
     </form>
 </div>
+<?= $this->endSection('content') ?>
+
 
 <!-- Bootstrap JS, Popper.js, and jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

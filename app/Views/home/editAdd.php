@@ -71,7 +71,13 @@
     </style>
 </head>
 <body>
-    <?= view('home/sidebar'); ?> 
+<?= $this->extend('layout') ?>
+
+<?= $this->section('title') ?>
+Home
+<?= $this->endSection() ?>
+
+<?= $this->section('content') ?> 
     <div class="content">
         <h4><?= isset($add) ? esc($add) : esc($edit) ?> Family Member <?= isset($add) ? 'of family code ' . esc($familyCode) : esc($name) ?></h4>
         
@@ -316,7 +322,7 @@
         });
     
 </script>
-
+<?= $this->endSection('content');?>
 <div class="form-group">
     <label for="relationship">Relationship:</label>
     <select class="form-control" id="relationship" name="relationship" required></select>

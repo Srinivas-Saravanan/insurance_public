@@ -6,6 +6,9 @@
  *---------------------------------------------------------------
  */
 
+ error_reporting(E_ALL);
+ini_set('display_errors', '1');
+
 $minPhpVersion = '8.1'; // If you update this, don't forget to update `spark`.
 if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
     $message = sprintf(
@@ -20,6 +23,8 @@ if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
     exit(1);
 }
 
+
+
 /*
  *---------------------------------------------------------------
  * SET THE CURRENT DIRECTORY
@@ -33,7 +38,6 @@ define('FCPATH', __DIR__ . DIRECTORY_SEPARATOR);
 if (getcwd() . DIRECTORY_SEPARATOR !== FCPATH) {
     chdir(FCPATH);
 }
-
 /*
  *---------------------------------------------------------------
  * BOOTSTRAP THE APPLICATION

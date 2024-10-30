@@ -68,12 +68,19 @@
     </style>
 </head>
 <body>
+<?= $this->extend('layout') ?>
+
+<?= $this->section('title') ?>
+Home
+<?= $this->endSection() ?>
+
+<?= $this->section('content') ?>
+
 <?php if (session()->getFlashdata('alert')): ?>
     <div class="alert alert-success">
         <?= session()->getFlashdata('alert') ?>
     </div>
 <?php endif; ?>
-    <?= view('home/sidebar') ?>
     <form action='<?= base_url("home/saveFam") ?>' method='post'>
         <div class="content">
             <div class="form-group">
@@ -111,7 +118,7 @@
             </div>
         </div>
     </form>
-
+    <?= $this->endSection('content');?>
     <script>
         $(document).ready(function() {
             $('#familyCode').on('change', function() {
@@ -135,5 +142,7 @@
             });
         });
     </script>
+   
+
 </body>
 </html>

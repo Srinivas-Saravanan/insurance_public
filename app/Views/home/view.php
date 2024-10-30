@@ -74,8 +74,14 @@
     </style>
 </head>
 <body>
-<?= view('home/sidebar'); ?> 
-<div class="container mt-5" style="margin-left: 16%;">
+<?= $this->extend('layout') ?>
+
+<?= $this->section('title') ?>
+Home
+<?= $this->endSection() ?>
+
+<?= $this->section('content') ?>
+<div class="container mt-5" .3>
     <h2 class="mb-4">Family Members of <?= esc($familyHead['name']) ?></h2>
     <table class="table table-bordered table-striped">
         <thead>
@@ -123,5 +129,6 @@
         </tbody>
     </table>
 </div>
+<?= $this->endSection('content') ?>
 </body>
 </html>
