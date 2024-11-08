@@ -6,6 +6,7 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Auth::index');
+$routes->get('/payment','Paytm::index');
 $routes->post('/check',"Auth::check");
 $routes->get('/logout',"Auth::logout");
 $routes->group('', ['filter' => 'AuthFilter'], function($routes) {

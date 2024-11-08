@@ -55,6 +55,12 @@
 
                 <?php elseif (session()->has('loggedEmp')): ?>
                     <li class="nav-item">
+                        <a href="<?= base_url('/payment') ?>" class="nav-link <?= ($currentURI == 'payment') ? 'active' : '' ?>">
+                        <i class="nav-icon fas fa-credit-card"></i>
+                            <p>Renewal</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="<?= base_url('/logout') ?>" class="nav-link <?= ($currentURI == 'logout') ? 'active' : '' ?>">
                             <i class="nav-icon fas fa-sign-out-alt"></i>
                             <p>Log Out</p>
